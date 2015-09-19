@@ -50,7 +50,7 @@ Quá trình để mỗi thiết bị thông tin với nhau tại một lớp đ�
 
 Dữ liệu người dùng host A từ tầng 7 được đóng gói qua các tầng  và chuyển xuống các tầng 1 . Tầng 1 chuyển các gói dữ liệu thành các bit nhị phân và truyền trên đường vật lý .  Ở host B quá trình thực hiện ngược lại quá trình ở A , các gói được bóc tách và chuyển lên tầng 7 .
 
-<img src=[Imgur](http://i.imgur.com/QQ2bVrw.png)]>
+<img src=[Imgur](http://i.imgur.com/QQ2bVrw.png)>
 
 #**B.Mô hình TCP/IP**
 
@@ -83,6 +83,43 @@ Dữ liệu người dùng host A từ tầng 7 được đóng gói qua các t�
 Mục đích của lớp Internet là chọn đường đi tốt nhất xuyên qua mạng cho các gói dữ liệu di chuyển tới đích . Giao thức chính của lớp này là Internet Protocol (IP) IP không quan tâm đến nội dung của các gói nhưng tìm kiếm đường dẫn cho gói tới đích . Phân mảnh và hợp nhất gói liệu IP 
 
 **3.Transport **
+- Có trách nhiệm thiết lập phiên truyền thông giữa 2 máy tính và quy định cách truyền dữ liệu . có 2 cánh truyền thông chính là :
+<ul>
+<li>UDP: là cách truyền thông stream , dữ liệu được đẩy toàn bộ lên và không bảo đảm truyền dữ liệu 1 cách tin cậy , cấu trúc gói tin đơn giản.
+<li>TCP : là cách truyền tin cậy , đảm bảo xác thực đã nhận và gửi gói tin . Chắc chắn gói tin được truyền đầy đủ.
+</ul>
+- Tiến trình bắt tay 3 bước :
+<ul>
+<li>1. SYN: các chương trình máy con (ví dụ yêu cầu từ browser, ftp client) bắt đầu connection với máy chủ bằng cách gửi một packet với cờ "SYN" đến máy chủ.
+SYN packet này thường được gửi từ các cổng cao (1024 - 65535) của máy con đến những cổng trong vùng thấp (1 - 1023) của máy chủ. Chương trình trên máy con sẽ hỏi hệ điều hành cung cấp cho một cổng để mở connection với máy chủ. Những cổng trong vùng này được gọi là "cổng máy con" (client port range). Tương tự như vậy, máy chủ sẽ hỏi HĐH để nhận được quyền chờ tín hiệu trong máy chủ, vùng cổng 1 - 1023. Vùng cổng này được gọi là "vùng cổng dịch vụ" (service port).
+Ví dụ (mặc định):
+
+Web Server sẽ luôn chờ tín hiệu ở cổng 80 và Web browser sẽ connect vào cổng 80 của máy chủ.
+FTP Server sẽ lắng ở port 21.
+
+Ngoài ra trong gói dữ liệu còn có thêm địa chỉ IP của cả máy con và máy chủ.
+<li>2. SYN/ACK: khi yêu cầu mở connection được máy chủ nhận được tại cổng đang mở, server sẽ gửi lại packet chấp nhận với 2 bit cờ là SYN và ACK.
+
+SYN/ACK packet được gửi ngược lại bằng cách đổi hai IP của server và client, client IP sẽ thành IP đích và server IP sẽ thành IP bắt đầu. Tương tự như vậy, cổng cũng sẽ thay đổi, server nhận được packet ở cổng nào thì cũng sẽ dùng cổng đó để gửi lại packet vào cổng mà client đã gửi.
+Server gửi lại packet này để thông báo là server đã nhận được tín hiệu và chấp nhận connection, trong trường hợp server không chấp nhận connection, thay vì SYN/ACK bits được bật, server sẽ bật bit RST/ACK (Reset Acknowledgement) và gởi ngược lại RST/ACK packet.
+
+Server bắt buộc phải gửi thông báo lại bởi vì TCP là chuẩn tin cậy nên nếu client không nhận được thông báo thì sẽ nghĩ rằng packet đã bị lạc và gửi lại thông báo mới.
+<li>3. ACK: khi client nhận được SYN/ACK packet thì sẽ trả lời bằng ACK packet. Packet này được gởi với mục đích duy báo cho máy chủ biết rằng client đã nhận được SYN/ACK packet và lúc này connection đã được thiết lập và dữ liệu sẽ bắt đầu lưu thông tự do.Đây là tiến trình bắt buộc phải thực hiện khi client muốn trao đổi dữ liệu với server thông qua giao thức TCP. Một số thủ thuật dựa vào đặc điểm này của TCP để tấn công máy chủ (ví dụ DOS).                                        
+
+**4.Application**
+- Gồm nhiều giao thức cung cấp ứng dụng để trao đổi thông tin với người dùng . Lớp ứng dụng của mô hình TCP/IP kiểm soát các giao thức lớp cao, các chủ đề về trình bày, biểu diễn thông tin, mã hóa và điều khiển hội thoại. Bộ giao thức TCP/IP tổ hợp tất cả các ứng dụng liên quan đến các chủ đề vào trong một lớp và đảm bảo số liệu này được đóng gói thích hợp trước khi chuyển nó đến lớp kế tiếp. TCP/IP không chỉ chứa các đặc tả về lớp Internet và lớp vận chuyển, như IP và TCP, mà còn đặc tả cho các ứng dụng phổ biến. TCP/IP có các giao thức để hỗ trợ truyền file, e-mail và remote login, thêm vào các ứng dụng sau đây:
+<ul>
+<li>File Transfer Protocol (FTP): FTP là một dịch vụ có tạo cầu nối (connection-oriented) tin cậy, nó sử dụng TCP để truyền các tập tin giữa các hệ thống có hỗ trợ FTP. Nó hỗ trợ truyền file nhị phân hai chiều và tải các file ASCII.
+<li>Trivial File Transfer Protocol (TFTP): TFTP là một dịch vụ không tạo cầu nối (connectionless) dùng UDP (User Datagram Protocol). TFTP được dùng trên router để truyền các file cấu hình và các Cisco IOS image và để truyền các file giữa các hệ thống hỗ trợ TFTP. Nó hữu dụng trong một vài LAN bởi nó hoạt động nhanh hơn FTP trong một môi trường ổn định.
+<li>Network File System (NFS): NFS là một bộ giao thức hệ thống file phân tán được phát triển bởi Sun Microsystems cho phép truy xuất file đến các thiết bị lưu trữ ở xa như một đĩa cứng qua mạng.
+<li>Simple Mail Transfer Protocol (SMTP): SMTP quản lý hoạt động truyền e-mail qua mạng máy tính. Nó không hỗ trợ truyền dạng số liệu nào khác hơn là plaintext
+<li>Terminal emulation (Telnet): Telnet cung cấp khả năng truy nhập từ xa vào máy tính khác. Nó cho phép một user đăng nhập vào một Internet host và thực thi các lệnh. Một Telnet client được xem như một host cục bộ. Một Telnet server được xem như một host ở xa.
+<li>Simple Network Management Protocol (SNMP): SNMP là một giao thức cung cấp một phương pháp để giám sát và điều khiển các thiết bị mạng và để quản lý các cấu hình, thu thập thống kê, hiệu suất và bảo mật.
+<li>Domain Name System (DNS): DNS là một hệ thống được dùng trên Internet để thông dịch tên của các miền (domain) và các node mạng được quảng cáo công khai sang các địa chỉ IP.
+</ul>
+
+
+
 
 
 
