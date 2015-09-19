@@ -118,6 +118,22 @@ Server bắt buộc phải gửi thông báo lại bởi vì TCP là chuẩn tin
 <li>Domain Name System (DNS): DNS là một hệ thống được dùng trên Internet để thông dịch tên của các miền (domain) và các node mạng được quảng cáo công khai sang các địa chỉ IP.
 </ul>
 
+#**C.GITHUB**
+- Github đi vào hoạt động tháng 2 năm 2008 là  là một dịch vụ lưu trữ source code được các DEV sử dụng rộng dãi .
+
+- Ưu điểm của github :
+<ul>
+<li>Chỉnh sửa thuận tiện và có thể đánh chú thích đoạn đã chỉnh sửa nhằm tránh nhầm lẫn 
+<li>Dễ dàng quan lí và chia sẻ file ..v..v..
+</ul>
+- Các lệnh dùng trong git shell:
+<ul>
+<li>git --version : kiểm tra phiên bản git 
+<li>git init : khởi tạo local
+<li>git status : xem trạng thái 
+<li>git commit -m "nội dung chú thich"
+<li>git push origin master : upload lên server
+</ul>
 
 
 
