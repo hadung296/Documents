@@ -10,5 +10,8 @@ phần mềm có thể kiểm tra sản phẩm của mình chạy trên nền nh
 cứu phần mềm độc hại có thể phân tích một virus mới mà không hề gây tổn hại đến máy tính thật và người dùng bình thường có thể 
 chạy các phần mềm mà chỉ có thể chạy trên các hệ điều hành cũ.
   **Cách sử dụng VMWare Workstation :**
-  ![Giao diện VMWare Workstation ]http://imgur.com/Y8xL3TF (<img />)
+  
+  [Imgur](http://i.imgur.com/Y8xL3TF.png)
+  
+  
   
