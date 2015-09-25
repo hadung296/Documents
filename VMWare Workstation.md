@@ -59,6 +59,24 @@ Thiết lập dung lượng ổ đĩa
 ![Imgur](http://i.imgur.com/OtAcTKs.png)
 Có thể chọn Customize hardware để thiét lập thêm 1 số tùy chọn > finish. 
 
+## ** Các chế độc card mạng trong VMWare Workstation**
+
+![Imgur](http://i.imgur.com/G7g9jfA.png)
+
+- các tùy chọn :
+<ul>
+<li> bridge :card này sử dụng chính card mạng thật của chúng ta để kết nối ra ngoài Internet (card ethernet hoặc wireless). Do đó khi sử dụng card mạng này IP của máy ảo sẽ cùng với dải IP của máy thật.
+<li> NAT : card này Nat địa chỉ IP của máy thật để máy ảo sử dụng kết nối ra ngoài internet .
+<li> Host only : Cho người sử dụng có thể tự cấu hình IP cho máy ảo .
+</ul>
+ 
+- Chúng ta có thể add thêm các card mạng hoặc lược bỏ đi 1 số card mạng ở mục add network và remove network .
+- Để cấu hình Ip cho máy ảo chọn Host only ở đây ta có thể cấu hình DHCP và đặt IP cũng như SUBNET MARK .
+
+![Imgur](http://i.imgur.com/05TLhgH.png)
+![Imgur](http://i.imgur.com/RAuzgnI.png)
+
+
 
 
 
