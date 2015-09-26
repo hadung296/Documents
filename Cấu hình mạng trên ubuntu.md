@@ -1,5 +1,4 @@
 # Cấu hình mạng trên ubuntu
-- Ubuntu cũng như các hệ điều hành linux khác cũng có card mạng như driver và được lưu ở các file
 - Để xem máy có bao nhiêu card mạng, gõ lệnh ifconfig -a | grep eth
 - Để kiểm tra xem các card mạng đã được cấu hình hay chưa gõ các lệnh ifconfig .
 Lệnh này cung cấp thông tin về địa chỉ MAC, địa chỉ IP, gateway... của tất cả các card mạng. Nếu muốn xem thông tin từng card 
@@ -13,8 +12,7 @@ Ví dụ
 
 ~ifconfig eth0 192.168.1.2 netmask 255.255.255.0
 - Muốn card mạng được khai báo IP cố định, chúng ta đặt các lệnh cấu hình card mạng trong file cấu hình có đường dẫn là
- /etc/network/interface. Có thể dùng lệnh vi để tạo file cấu hình card mạng này và chỉnh sửa nó
-~sudo gedit /etc/network/interfaces .Nội dung file như sau:
+ /etc/network/interface.
 <ul>
 <li>auto lo
 <li>iface lo inet loopback
