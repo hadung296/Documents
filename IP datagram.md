@@ -35,13 +35,20 @@ kể từ khi gói dữ liệu IP có thể được nhận ra trật tự từ 
 <li>bit 0: Dành; phải bằng không. [lưu ý 1]
 <li>bit 1: Đừng DF (DF)
 <li>bit 2: More Fragments (MF)
-
+</ul>
 Nếu cờ DF được thiết lập, và sự phân mảnh được yêu cầu để định tuyến các gói dữ liệu, sau đó các gói tin bị loại bỏ. 
 Điều này có thể được sử dụng khi gửi các gói tin đến một máy chủ mà không có đủ nguồn lực để xử lý phân mảnh. Nó cũng có 
 thể được sử dụng cho Path MTU Discovery, hoặc là tự động bởi các phần mềm máy chủ IP, hoặc bằng tay bằng cách sử dụng các 
 công cụ chẩn đoán như ping hay traceroute. Đối với các gói unfragmented, cờ MF sẽ bị xóa. Đối với các gói tin bị phân mảnh,
 tất cả các mảnh vỡ ngoại trừ cuối cùng có cờ đặt MF. Đoạn cuối cùng có một trường Fragment khác không Offset, phân biệt nó từ
 một gói unfragmented.
+
 - Fragment offset : Đoạn bù đắp có chiều dài 13 bit và xác định bù đắp của một đoạn cụ thể so với sự khởi đầu của ban datagram 
 IP unfragmented
-- 
+- Time To Live (TTL) : phiên bản ngắn: Chỉ định bao lâu gói tin được phép "sống" trên mạng, về các bước nhảy router. Mỗi router decrements giá trị của trường TTL (làm giảm nó bằng một) trước khi truyền nó. Nếu trường TTL xuống hết, các gói tin được giả định đã đi quá lâu một tuyến đường và bị loại bỏ. Xem dưới đây để giải thích dài hơn TTL.
+- Checksum: Checksum tính trên tiêu đề để cung cấp bảo vệ cơ bản chống tham nhũng trong truyền tải. Đây không phải là mã CRC phức tạp hơn thường được sử dụng bởi các công nghệ lớp liên kết dữ liệu như Ethernet; nó chỉ là một checksum 16-bit. Nó được tính bằng cách chia các byte đầu vào từ (một từ là hai byte) và sau đó thêm chúng với nhau. Dữ liệu này không checksummed, chỉ là tiêu đề. Tại mỗi hop thiết bị nhận được datagram không tính toán checksum cùng và trên không phù hợp, loại bỏ các gói tin như bị hư hỏng.
+- Source Address: : Địa chỉ IP 32-bit của người khởi của các datagram. Lưu ý rằng mặc dù các thiết bị trung gian như các bộ định tuyến có thể xử lý các gói tin, họ thường không đưa địa chỉ của họ vào lĩnh vực này, nó luôn luôn là thiết bị ban đầu gửi các gói tin.
+- Destination Address::Địa chỉ IP 32-bit của người nhận của datagram. Một lần nữa, mặc dù các thiết bị như bộ định tuyến có thể là mục tiêu trung gian của gói tin, lĩnh vực này luôn luôn là cho đến cuối cùng.
+- Options :Một hoặc nhiều hơn của một số loại tùy chọn có thể được bao gồm sau khi các tiêu đề tiêu chuẩn trong datagram IP nhất định 
+- Padding: Nếu một hoặc nhiều tùy chọn mới có, và số lượng các bit được sử dụng đối với họ không phải là một bội số của 32, đủ không bit được thêm vào "pad ra" tiêu đề cho một bội số của 32 bit (4 byte).
+- Data : Dữ liệu được truyền đi trong các gói tin, hoặc thông báo lớp cao hơn một toàn bộ hoặc một mảnh của một.
