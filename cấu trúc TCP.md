@@ -36,6 +36,5 @@ của trường TCP length field là độ dài của toàn bộ phần header v
 - Options :Đây là trường tùy chọn. Nếu có thì độ dài là bội số của 32 bít.
 **2.Dữ liệu **
 
-Dữ liệu[sửa | sửa mã nguồn]
 Trường cuối cùng không thuộc về header. Giá trị của trường này là thông tin dành cho các tầng trên (trong mô hình 7 lớp OSI).
 Thông tin về giao thức của tầng trên không được chỉ rõ trong phần header mà phụ thuộc vào cổng được chọn.
