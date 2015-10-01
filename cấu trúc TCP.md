@@ -34,6 +34,7 @@ Kết quả thu được sau khi đảo giá trị từng bít được điền 
 của trường TCP length field là độ dài của toàn bộ phần header và dữ liệu của gói TCP.
 - Urgent pointer :Nếu cờ URG bật thì giá trị trường này chính là số từ 16 bít mà số thứ tự gói tin (sequence number) cần dịch trái.
 - Options :Đây là trường tùy chọn. Nếu có thì độ dài là bội số của 32 bít.
+
 **2.Dữ liệu **
 
 Trường cuối cùng không thuộc về header. Giá trị của trường này là thông tin dành cho các tầng trên (trong mô hình 7 lớp OSI).
