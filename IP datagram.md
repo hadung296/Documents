@@ -32,7 +32,7 @@ các mảnh vỡ từ các thông điệp khác nhau. Điều này là cần thi
 kể từ khi gói dữ liệu IP có thể được nhận ra trật tự từ bất kỳ thiết bị.
 - Flags :Một trường 3-bit sau và được sử dụng để kiểm soát hay xác định các mảnh vỡ. Chúng là (theo thứ tự, từ thứ tự cao thấp):
 <ul>
-<li>bit 0: Dành; phải bằng không. [lưu ý 1]
+<li>bit 0: Dành; phải bằng không.
 <li>bit 1: Đừng DF (DF)
 <li>bit 2: More Fragments (MF)
 </ul>
