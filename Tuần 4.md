@@ -48,4 +48,5 @@ nhau lí do linux là phần mềm mã nguồn mở và phần biên dịch trê
 - Apache nó cũng là 1 phần mềm cài đặt trên máy chủ để làm webserver.
 - Apache hỗ trợ đắc lực trong http server . hỗ trợ nhiều loại ngôn ngữ phổ biến  Perl, Python, Tcl, và PHP .
 - Apache có 3 chế độ hoạt động khác nhau : winnnt , prefork và worker 
+
 **2. Cài đặt** 
