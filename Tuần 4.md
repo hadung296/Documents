@@ -71,10 +71,6 @@ nhau lí do linux là phần mềm mã nguồn mở và phần biên dịch trê
 
 **Cấu hình apache **
 
-Cấu hình Apache2
-
-Trước khi bắt đầu, thủ thuật việt nam lưu ý bạn một số file  và thư mục cần lưu tâm
-
 /var/www : Thư mục mặc định chứa website
 
 /etc/apache2/apache2.conf : File cấu hình Apache2
