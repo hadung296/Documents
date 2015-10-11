@@ -1,9 +1,8 @@
 # Update
-- Lệnh update cho chúng ta cập nhập các package . Câu lệnh trên sẽ cập nhập tất cả các package từ các repository 
+- Lệnh update cho chúng ta cập nhập các package . Cập nhập các packege cho file sources trong hệ thống và cập nhập các gói mới để nâng cấp các phiên bản đã cũ 
 
 # Upgrade vs Dist-Upgrade
-- Thông thường các phần mềm mã nguồn mở thường được nâng cấp nhiều lần và thường xuyên có các bản cái tiến . Upgrade sẽ cho chúng
-ta biết các package nào cần được cập nhập và tao có thể xác nhận lại những câp nhập đó . 
+- Thông thường các phần mềm mã nguồn mở thường được nâng cấp nhiều lần và thường xuyên có các bản cái tiến . Upgrade sẽ cho chúng ta biết các package nào cần được cập nhập và tao có thể xác nhận lại những câp nhập đó . 
 - Upgrade sẽ thay thế hoàn toàn phiên bản cũ bằng phiên bản mới
 - Tuy nhiên có 1 vài trường hợp , 1 số phần mềm lại yêu cầu gói cài đăt trước đó vì vậy ta s dung dist-upgrade
 - Lệnh này thực sự hữu ích nếu bạn không chắc rằng việc cập nhật này có ảnh hưởng đến các thành phần khác trong hệ thống hay không
@@ -42,6 +41,14 @@ nhau lí do linux là phần mềm mã nguồn mở và phần biên dịch trê
 <li>sodu make và sudo make install để cài gói 
 </ul>
 
+# Cấu hình card mạng cho ubuntu
+
+- Để cấu hình cho card mạng ubuntu ta sửa và thêm card mạng cho file interfaces theo đường dẫn etc/network/interfaces
+
+![Imgur](http://i.imgur.com/QditsOL.png)
+
+- Sau đó lưu lại thông tin và restart lại card mạng 
+
 # Apache 
 
 **1.Về apache**
@@ -49,4 +56,45 @@ nhau lí do linux là phần mềm mã nguồn mở và phần biên dịch trê
 - Apache hỗ trợ đắc lực trong http server . hỗ trợ nhiều loại ngôn ngữ phổ biến  Perl, Python, Tcl, và PHP .
 - Apache có 3 chế độ hoạt động khác nhau : winnnt , prefork và worker 
 
-**2. Cài đặt** 
+**2. Cài đặt apache** 
+
+- Chuyển sang quyền root với lệnh sudo su 
+![Imgur](http://i.imgur.com/DdqtfM2.png)
+
+- apt-get update 
+![Imgur](http://i.imgur.com/OOH2Zkp.png)
+
+- cài đặt apache : sudo apt-get apache2 và đợi quá trình cài đặt hoàn tất .
+- Hoàn tất cài đặt và kiểm tra thông server 
+
+![Imgur](http://i.imgur.com/zIoGD4N.png)
+
+**Cấu hình apache **
+
+Cấu hình Apache2
+
+Trước khi bắt đầu, thủ thuật việt nam lưu ý bạn một số file  và thư mục cần lưu tâm
+
+/var/www : Thư mục mặc định chứa website
+
+/etc/apache2/apache2.conf : File cấu hình Apache2
+
+/etc/apache2/mods-enabled : Thư mục chứa các module của Apache module (các module đang hoạt động
+
+/etc/apache2/sites-enabled : Thư mục chứa các cài đặt định danh cho các website (Virtual Host)
+
+/etc/apache2/conf.d : Các cấu hình mở rộng cho Apache.
+
+Sau khi cài đặt Apache, ứng dụng sẽ được thêm vào danh sách init.d của hệ thống, do đó có thể tự khởi động cùng với hệ điều hành. Sử dụng những lệnh sau để khởi động, kích hoạt và ngừng hoạt động của Apache:
+
+- sudo /etc/init.d/apache2 start #chạy apache
+- sudo /etc/init.d/apache2 stop #dừng apache
+- sudo /etc/init.d/apache2 restart #khởi động lại apache
+- Nếu không muốn Apache tự khởi động cùng hệ thống, gõ lệnh sau:
+
+sudo update-rc.d -f apache2 remove
+
+Còn nếu muốn làm ngược lại quá trình trên (khởi động cùng hệ thống) thì sử dụng lệnh:
+
+sudo update-rc.d apache2 defaults
+
