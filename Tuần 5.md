@@ -121,7 +121,10 @@ Module này đóng vai trò đảm nhiệm các chức năng chính của Web Se
 
 #5. sử dụng virtual host .
 
-
+  Nếu như  thư mục /var/www/html để chứa dữ liệu website gốc thì virtual host tạo ra một thư mục mới theo ý của bạn rồi thêm domain cần sử dụng cho thư mục đó.
+  
+  
+  
 
 
 
