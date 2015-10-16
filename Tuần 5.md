@@ -45,7 +45,6 @@ hoặc đa tiến trình (multiprocessing) hoặc các hệ lai giữa chúng.
 - envvars – File thiết lập các biến với giá trị sẵn để sử dụng trong các file cấu hình.
 - ports.conf – File cấu hình cổng mạng của Apache (mặc định là port 80).
 - Thư mục gốc chứa webside của apache là /var/www/html 
--  file .htaccess:Về bản chất, đây là 1 file vô cùng quan trọng, có khả năng giám sát và quản lý các hành động của server mà không cần phải can thiệp vào bên trong module của Apache. Ở chế độ mặc định, mọi chức năng của .htaccess đều bị tắt bỏ, thậm chí server còn không biết đến sự tồn tại của file này.
 
 # 3.Các modules trong Apache
 
