@@ -114,7 +114,13 @@ Module này đóng vai trò đảm nhiệm các chức năng chính của Web Se
 - SSLCertificateKeyFile
 - SSLVerifyClient
 
-#4.
+#4.named based virtual host và ip based virtual host
+
+- Named based virtual host: Một apache server cho phép host nhiều website có domain name khác nhau trên cùng một IP. Name based virtual host được sử dụng để cung cấp shared hosting.
+
+- IP based virtual host: Một apache server cho phép host nhiều website có domain khác nhau trên các IP khác nhau.
+
+#5. sử dụng virtual host .
 
 
 
