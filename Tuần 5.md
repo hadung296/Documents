@@ -29,7 +29,25 @@ có quá nhiều trang Web động phải tốn thời gian để tính toán ch
 Web Servercó xu hướng tận dụng ưu điểm của 2 phương pháp khác nhau để giải quyết vấn đề này là: đa tiểu trình (multi-threading)
 hoặc đa tiến trình (multiprocessing) hoặc các hệ lai giữa chúng.
 
-# 2.Các modules trong Apache
+# 2.File cấu hình Apache
+
+- thư mục chứa các thiết lập của apache nằm trong đường dẫn /etc/apache2 
+
+![Imgur](http://i.imgur.com/SFJAjpa.png)
+- conf-availble : Thư mục chứa các file thiết lập sẵn của apache nhưng những thiết lập ấy chưa được áp dụng vì ubuntu kg thể load tới cấu hình trong thư mục này 
+- conf-enabled : Thư mục này chứa các file cấu hình trên ubuntu được bật . Nếu thư mục này có liên kết tượng trưng đến file mod nào đó bên availble thì nó sẽ được bật . 
+- mods-availble : Thư mục chứa các file từng module của Apache nhưng chưa được bật.
+- mods-enabled/ – Thư mục chứa các file từng module của Apache đang được bật.
+- site-available/ – Thư mục chứa file cấu hình VirtualHost của Apache nhưng chưa được bật.
+- site-enabled/ – Thư mục chứa file cấu hình VirtualHost của Apache đang được bật.
+- File cấu hình Apache
+- magic – File thiết lập của module mod_mime_magic trên Apache.
+- envvars – File thiết lập các biến với giá trị sẵn để sử dụng trong các file cấu hình.
+- ports.conf – File cấu hình cổng mạng của Apache (mặc định là port 80).
+- Thư mục gốc chứa webside của apache là /var/www/html 
+-  file .htaccess:Về bản chất, đây là 1 file vô cùng quan trọng, có khả năng giám sát và quản lý các hành động của server mà không cần phải can thiệp vào bên trong module của Apache. Ở chế độ mặc định, mọi chức năng của .htaccess đều bị tắt bỏ, thậm chí server còn không biết đến sự tồn tại của file này.
+
+# 3.Các modules trong Apache
 
   Apache được thiết kế theo lối modules nó bao gồm 1 modules core đóng vai trò trung tâm và các modules khác là vệ tinh hỗ trợ trong quá trình sử lý . Các modules không liên hệ trực tiếp với nhau mà thông qua core 
   
@@ -96,17 +114,9 @@ Module này đóng vai trò đảm nhiệm các chức năng chính của Web Se
 - SSLCertificateKeyFile
 - SSLVerifyClient
 
-# 3.Cấu hình webserver Apache
-**Website mặc định**
+#4.
 
-  Mặc định website của bạn cần lưu trong địa chỉ /var/www/html và file mặc định là index.html. Để thử nghiệm, bạn upload một website.
-  
-![Imgur](http://i.imgur.com/71agG0f.png)
- 
-  Bạn có nhiều giải pháp cho việc upload một website lên webserver, FTP là một gợi ý tốt. Nếu muốn đơn giản hơn thì bạn dùng một tiện ích SSH nào đó để gửi file lên. Ở đây, tôi giả định rằng bạn có thể thực hiện được những đều đó.
-  
-  Sau đó bạn chỉ cần thử lại webserver của mình bằng cách truy cập địa chỉ ip của server, ví dụ ở đây là 92.168.40.131.
-  
-  ![Imgur](http://i.imgur.com/zIoGD4N.png)
-  
-  
+
+
+
+
