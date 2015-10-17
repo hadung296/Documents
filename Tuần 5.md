@@ -122,7 +122,25 @@ Module này đóng vai trò đảm nhiệm các chức năng chính của Web Se
 #5. sử dụng virtual host .
 
   Nếu như  thư mục /var/www/html để chứa dữ liệu website gốc thì virtual host tạo ra một thư mục mới theo ý của bạn rồi thêm domain cần sử dụng cho thư mục đó.
-  
+#6.Tối ưu Apache để tiết kiệm CPU
+
+Mặc định có thể bạn sẽ thấy Apache nó “ăn” hơi bị nhiều CPU do sử dụng quá nhiều process. Để thiết lập lại số lượng processes mà Apache được phép tạo ra, hãy mở file /etc/httpd/conf/httpd.conf lên và tìm đoạn:
+
+- 01 <IfModule prefork.c>
+- 02 StartServers       8
+- 03 MinSpareServers    5
+- 04 MaxSpareServers   20
+ -05 ServerLimit      256
+- 06 MaxClients       256
+- 07MaxRequestsPerChild  4000
+- 08 </IfModule>
+
+Ở đoạn trên, bạn sửa lại các phần thành những giá trị sau:
+
+StartServers : 1
+MinSpareServers : 1
+MaxSpareServers : 5
+MaxRequestsPerChild : 10000
   
   
 
