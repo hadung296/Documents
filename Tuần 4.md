@@ -127,10 +127,10 @@ Tất cả các loại Shell phía trên đều đọc các lệnh người dùn
 
 Chương trình kinh điển :3 . Hello World. Tạo 1 file tên là hello_world.sh, nội dung như sau:
 
-#!/bin/bash
-# declare STRING variable
+ #!/bin/bash
+ # declare STRING variable
 STRING=”Hello World”
-#print variable on a screen
+ #print variable on a screen
 echo $STRING
 
 Dòng đầu tiên chúng ta luôn đặt #!/bin/bash, đây là cú pháp bắt buộc. Sau # được hiểu là comment, chú thích của các đoạn mã.
@@ -139,7 +139,8 @@ STRING=”Hello World” // Khai báo biến STRING.
 echo $STRING // Hiển thị biến STRING ra màn hình.
 Lưu file lại, tiến hành chmod cho file:
 
-#chmod 755 hello_world.sh
+ chmod 755 hello_world.sh
+
 Chạy file:
 
 sh hello_world.sh
