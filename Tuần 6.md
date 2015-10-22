@@ -38,18 +38,14 @@ phải là DNS server của chính tổ chức quản lý website đó chứ kh�
 - RA: Trường 1 bit này sẽ cho biết truy vấn đệ qui có được thực thi trên server không .
 - Z: Là trường 1 bit. Đây là một trường dự trữ, và được thiết lập là 0.
 - Rcode: Là trường 4 bits, gói tin hồi đáp sẽ có thể nhận các giá trị sau :
-
-0: Cho biết là không có lỗi trong quá trình truy vấn.
-
-1: Cho biết định dạng gói tin bị lỗi, server không hiểu được truy vấn.
-
-2: Server bị trục trặc, không thực hiện hồi đáp được.
-
-3: Tên bị lỗi. Chỉ có server có đủ thẩm quyền mới có thể thiết lập giá trị náy.
-4: Không thi hành. Server không thể thực hiện chức năng này .
-
-5: Server từ chồi thực thi truy vấn.
-
+<ul>
+<li>0: Cho biết là không có lỗi trong quá trình truy vấn.
+<li>1: Cho biết định dạng gói tin bị lỗi, server không hiểu được truy vấn.
+<li>2: Server bị trục trặc, không thực hiện hồi đáp được.
+<li>3: Tên bị lỗi. Chỉ có server có đủ thẩm quyền mới có thể thiết lập giá trị náy.
+<li>4: Không thi hành. Server không thể thực hiện chức năng này .
+<li>5: Server từ chồi thực thi truy vấn.
+</ul>
 - QDcount: Số lần truy vấn của gói tin trong một vấn đề.
 - ANcount: Số lượng tài nguyên tham gia trong phần trả lời.
 - NScount: Chỉ ra số lượng tài nguyên được ghi lại trong các phẩn có thẩm quyền của gói tin.
