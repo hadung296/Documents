@@ -51,3 +51,6 @@ phải là DNS server của chính tổ chức quản lý website đó chứ kh�
 - NScount: Chỉ ra số lượng tài nguyên được ghi lại trong các phẩn có thẩm quyền của gói tin.
 - ARcount: Chỉ ra số lượng tài nguyên ghi lại trong phần thêm vào của gói tin.
 
+#Triển khai DNS 
+
+https://www.youtube.com/watch?v=R7FcPYZjlH4
