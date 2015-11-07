@@ -66,4 +66,6 @@ mysql> UPDATE mytable SET column1="mydata" WHERE column2="mydata";
 
 Đăng kí website chạy wordpress trên ubuntu . 
 
+![Imgur](http://i.imgur.com/ioysfnP.png)
+
 ![Imgur](http://i.imgur.com/HT1FuiD.png)
