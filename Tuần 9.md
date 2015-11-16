@@ -28,7 +28,7 @@ Sau đó nhập user và passwd
 
 ![Imgur](http://i.imgur.com/K3JcSfE.png)
 
-[Imgur](http://i.imgur.com/ylugXE3.png)
+![Imgur](http://i.imgur.com/ylugXE3.png)
 
 Như vậy ta có thể ssh vào ubuntu server từ putty !!
 
@@ -43,8 +43,30 @@ Như vậy ta có thể ssh vào ubuntu server từ putty !!
 
 - Sau khi key đã được generate, nhấn ‘Save Private Key’. Đảm bảo bạn lưu key file ở một nơi an toàn.
 
+![Imgur](http://i.imgur.com/fam67aw.png)
+
 *Trên máy ubuntu server*
 
+- Chạy ssh-keygen -t rsa
+- Nhấn Enter khi được hỏi nơi lưu key file (mặc định /root/.ssh/id_rsa)
+- Nhập passphrase nếu cần
+- Tiếp theo, ta load Puttygen .Và chạy nó ở windown client.Giao diện của Puttygen xuất hiện như hình sau.
+
+![Imgur](http://i.imgur.com/XZD7OMT.png)
+
+![Imgur](http://i.imgur.com/fam67aw.png)
+
+- Mở PuTTY và chuyển tới trường Auth và chọn file .ppk mà ta đã lưu ở trên.
+
+![Imgur](http://i.imgur.com/msRxpUt.png)
+
+- Tiếp theo, ta quay lại trường Session và nhập vào IP của ssh server.Nhập vào user mà ta đã cấu hình chứng thực bằng Keys Authentication.
+
+![Imgur](http://i.imgur.com/aQW5871.png)
+
+.........
+
+![Imgur](http://i.imgur.com/u1ZGm4j.png)
 
 
 
