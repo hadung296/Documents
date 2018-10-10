@@ -1,0 +1,93 @@
+SVN server gần giống như GitHub nơi mà người ta chia sẽ các mã nguồn và làm việc chung với nhau.
+
+Bài này tôi sẽ hướng dẫn các bạn cài đặt nó lên VPS CentOS7
+
+Trước tiên ta SSH vào VPS và update các gói, sau đó khởi động lại VPS.
+
+yum update -y
+shutdown -r now
+Tiếp đó cài đặt Apache làm webserver
+
+yum install httpd
+Ta xóa trang hiển thị mặc định của Apache đi
+
+sed -i 's/^/#&/g' /etc/httpd/conf.d/welcome.conf
+Không cho phép Apache hiển thị file trong thư mục /var/www/html
+
+sed -i "s/Options Indexes FollowSymLinks/Options FollowSymLinks/" /etc/httpd/conf/httpd.conf
+Giờ ta sẽ cài SVN server và plugin cho Apache
+
+yum install subversion mod_dav_svn -y
+Cấu hình cho SVN server vừa cài xong
+
+nano /etc/httpd/conf.modules.d/10-subversion.conf
+Bên trong sẽ có dạng
+
+LoadModule dav_svn_module modules/mod_dav_svn.so
+LoadModule authz_svn_module modules/mod_authz_svn.so
+LoadModule dontdothat_module modules/mod_dontdothat.so
+Ta thêm vào đoạn sau xuống dưới, rồi Ctrl+O, Enter sau đó Ctr+X
+
+<Location /svn>
+DAV svn
+SVNParentPath /svn
+AuthName "SVN Repos"
+AuthType Basic
+AuthUserFile /etc/svn/svn-auth
+AuthzSVNAccessFile /svn/authz
+Require valid-user
+</Location>
+Vậy là xong phần cấu hình, ta sẽ tạo 1 Repo cho SVN server tên là repo1
+
+sudo mkdir /svn
+cd /svn
+svnadmin create repo1
+chown -R apache:apache repo1
+Tạo 1 tài khoản tên là user001 trên SVN server, gõ 2 lần pass của bạn muốn vào là được.
+
+mkdir /etc/svn
+htpasswd -cm /etc/svn/svn-auth user001
+chown root:apache /etc/svn/svn-auth
+chmod 640 /etc/svn/svn-auth
+Nếu muốn tạo thêm tài khoản ta dùng lệnh, sau đó cũng gõ 2 lần pass vào.
+
+htpasswd -m /etc/svn/svn-auth user002
+htpasswd -m /etc/svn/svn-auth user003
+Tiếp đến là phân quyền cho tài khoản
+
+Giả sử ta muốn phân  quyền như sau:
+
+User "user001" là admin
+User "user002" là người dùng có thể đọc và viết lên "repo1".
+User "user003"là người dùng chỉ có thể đọc trên "repo1"
+Mở file cấu hình phần quyền
+
+cp /svn/repo1/conf/authz /svn/authz
+nano /svn/authz
+Sau đó sửa bên trong cho giống như dưới, đoạn nào chưa có ta thêm vào. Ctr+O rồi enter để lưu, Ctrl+X để thoát.
+
+[groups]
+admin=user001
+repo1_user=user002
+repo1_trainee=user003
+
+[/]
+@admin=rw
+
+[repo1:/]
+@repo1_user=rw
+@repo1_trainee=r
+Bước cuồi cùng là bật Apache và cho nó chạy cùng OS
+
+systemctl enable httpd.service
+systemctl start httpd.service
+systemctl restart httpd.service
+Mở cổng Firewall cho Apache nếu bạn bật
+
+firewall-cmd --zone=public --permanent --add-service=http
+firewall-cmd --reload
+Sau khi đã cài đặt xong SVN server ta có thể truy cập vào nó qua web bằng đường dẫn http://IP VPS/svn/repo1/ rồi đăng nhập bằng tài khoản đã tạo ở trên. Tuy nhiên bên trong chưa có gì cả.
+
+Và ta cần dùng 1 SVN Client để quản lý nó, hãy tải ở đây https://tortoisesvn.net/downloads.html
+
+Các bạn có thể xem cách sử dụng SVN Client tại đây https://tailieu.hostingviet.vn/cach-su-dung-tortoisesvn-de-lam-viec-tren-svn-server/
